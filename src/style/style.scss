@@ -1,0 +1,73 @@
+$font-primary: 'Montserrat', sans-serif;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: $font-primary;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+label {
+    width: 190px;
+    color: #fff;
+}
+
+input[type="number"] {
+    width: 45px;
+    border: none;
+    padding: 0.25rem;
+}
+
+.password-generator {
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    width: 100%;
+    background-color: #20639b;
+    padding: 2rem 2.5rem;
+}
+
+.password-generator h1 {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 1.25rem;
+    font-size: 1.75rem;
+}
+
+.password-generator__form-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+}
+
+.password-generator__button {
+    border: 2px solid #173f5f;
+    padding: 0.5rem;
+    margin-top: 1rem;
+    background-color: #3caea3;
+    color: #173f5f;
+    font-size: 1.35rem;
+    cursor: pointer;
+    transition: background-color 0.35s ease-in-out;
+}
+
+.password-generator__button:hover {
+    background-color: #173f5f;
+    color: #fff;
+}
+
+.password-generator__textbox {
+    background-color: #173f5f;
+    margin-bottom: 1rem;
+    padding: 1rem 0.75rem;
+    color: #fff;
+    font-weight: 600;
+    min-height: 50px;
+}
