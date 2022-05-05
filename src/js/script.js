@@ -6,20 +6,34 @@ const includeLowerCase = document.querySelector("#lowercase-letters");
 const includeUpperCase = document.querySelector("#uppercase-letters");
 const includeSymbols = document.querySelector("#symbols");
 
-let CHARACTERS = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-let NUMBERS = "0123456789";
-let LOWERCASE = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+const NUMBERS = "0123456789";
+const LOWERCASE = "abcdefghijklmnopqrstuvwxyz";
+const UPPERCASE = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const SYMBOLS = "!@#$%^&*_-+=";
 
-const generatePasswordRandom = document.getElementById("generate-password");
+const button = document.getElementById("generate-password");
 
-// create a random characters
+// create a random password
 
-generatePasswordRandom.addEventListener("click", ()=>{    
-    let password = "";
-    for (let i = 0; i < passwordLength.value; i++) {
-        let randomPassword = CHARACTERS[Math.floor(Math.random()*CHARACTERS.length)];
-        password += randomPassword;        
-    }
+const generatePassword = () =>{
+    let characters = "";
+    let passwordLengthValue = passwordLength.value;
+    includeNumber.checked ? (characters += NUMBERS) : "";
+    includeLowerCase.checked ? (characters += LOWERCASE) : "";
+    includeUpperCase.checked ? (characters += UPPERCASE) : "";
+    includeSymbols.checked ? (characters += SYMBOLS) : "";
+
+    const password = generateContraseña(passwordLengthValue, characters);
     passwordDisplay.innerText = password;
-});
+};
 
+const generateContraseña = (length, characters) =>{
+    let password = "";
+    for (let i = 0; i < length; i++) {
+        password += characters[Math.floor(Math.random()*characters.length)];
+    }
+    return password;
+};
+
+button.addEventListener("click", generatePassword);
+window.addEventListener("load", generatePassword);
