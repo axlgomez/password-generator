@@ -69,5 +69,16 @@ input[type=number] {
   font-weight: 600;
   min-height: 50px;
 }
+.password-generator__textbox span {
+  opacity: 0;
+  display: inline-block;
+  transform: translateY(50px);
+}
+.password-generator__textbox span.fade {
+  opacity: 1;
+  animation: slideInDown;
+  animation-duration: 0.3s;
+  transform: translateY(0);
+}
 
 /*# sourceMappingURL=style.css.map */

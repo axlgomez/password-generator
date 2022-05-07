@@ -70,4 +70,19 @@ input[type="number"] {
     color: #fff;
     font-weight: 600;
     min-height: 50px;
+
+    span
+    {
+        opacity: 0;
+        display: inline-block;
+        transform: translateY(50px);
+    }
+
+    span.fade
+    {
+        opacity: 1;
+        animation: slideInDown; 
+        animation-duration: .3s; 
+        transform: translateY(0);
+    }
 }
