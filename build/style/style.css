@@ -5,11 +5,9 @@
 }
 
 body {
-  font-family: "Montserrat", sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   height: 100vh;
+  background: #071d2b;
 }
 
 label {
@@ -20,23 +18,30 @@ label {
 input[type=number] {
   width: 45px;
   border: none;
+  outline: none;
   padding: 0.25rem;
 }
 
 .password-generator {
   display: flex;
   flex-direction: column;
-  max-width: 500px;
   width: 100%;
-  background-color: #20639b;
+  margin: auto;
   padding: 2rem 2.5rem;
 }
 
 .password-generator h1 {
+  font-family: "Oswald", sans-serif;
   text-align: center;
   color: #fff;
   margin-bottom: 1.25rem;
-  font-size: 1.75rem;
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.password__box {
+  width: 500px;
+  margin: 2rem auto 0;
 }
 
 .password-generator__form-item {
@@ -45,40 +50,135 @@ input[type=number] {
   margin-bottom: 0.75rem;
 }
 
-.password-generator__button {
-  border: 2px solid #173f5f;
-  padding: 0.5rem;
-  margin-top: 1rem;
-  background-color: #3caea3;
-  color: #173f5f;
-  font-size: 1.35rem;
+.password-generator__form-item + .password-generator__form-item {
+  margin-top: 1.5rem;
+}
+
+.password__characters {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4.5rem;
+  margin: 3rem 0;
+  width: auto;
+  user-select: none;
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+input[type=checkbox] {
+  appearance: none;
+  background: #fff;
+  margin: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 1px solid rgb(0, 112, 246);
+  border-radius: 0.2rem;
+  transform: translateY(0.1rem);
   cursor: pointer;
-  transition: background-color 0.35s ease-in-out;
+}
+
+input[type=checkbox] {
+  display: grid;
+  place-content: center;
+}
+
+input[type=checkbox]::before {
+  content: "";
+  width: 0.7rem;
+  height: 0.7rem;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 0.5rem 0.5rem black;
+  transform-origin: bottom left;
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+}
+
+input[type=checkbox]:checked::before {
+  transform: scale(1);
+}
+
+input[type=checkbox]:focus {
+  outline: max(2px, 0.15rem) solid rgba(0, 112, 246, 0.3);
+  outline-offset: max(2px, 0.15rem);
+}
+
+input[type=checkbox]:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.password-generator__button {
+  border-radius: 2rem;
+  height: 50px;
+  display: block;
+  margin: 2rem auto 0;
+  padding: 0 2rem;
+  line-height: 1.4;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  background: #0069d9;
+  color: #fff;
+  box-shadow: 0 8px 32px -8px rgba(0, 112, 246, 0.72), 0 16px 32px -16px rgba(7, 29, 43, 0.24);
+  border: 0;
+  user-select: none;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.7s;
 }
 
 .password-generator__button:hover {
-  background-color: #173f5f;
-  color: #fff;
+  background: rgba(0, 105, 217, 0.7);
 }
 
-.password-generator__textbox {
-  background-color: #173f5f;
-  margin-bottom: 1rem;
-  padding: 1rem 0.75rem;
-  color: #fff;
-  font-weight: 600;
-  min-height: 50px;
+.password__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  letter-spacing: 0.1px;
+  color: #261c6a;
+  margin: 0 auto 3rem;
+  outline: none;
+  border: none;
+  border-radius: 24px;
+  background-color: #fff;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  -webkit-user-select: all;
+  -moz-user-select: all;
+  -ms-user-select: all;
+  user-select: all;
+  cursor: text;
 }
-.password-generator__textbox span {
+.password__container .password-generator__textbox {
+  padding: 1rem 1.4rem;
+  font-weight: 400;
+  letter-spacing: 0.7px;
+  width: 75%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.password__container .password-generator__textbox span {
   opacity: 0;
   display: inline-block;
-  transform: translateY(50px);
 }
-.password-generator__textbox span.fade {
+.password__container .password-generator__textbox span.fade {
   opacity: 1;
-  animation: slideInDown;
-  animation-duration: 0.3s;
-  transform: translateY(0);
+  animation: flip;
+  animation-duration: 0.1s;
+}
+.password__container .badge {
+  width: 25%;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  font-weight: bold;
 }
 
 /*# sourceMappingURL=style.css.map */
