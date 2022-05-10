@@ -7,13 +7,14 @@ const includeLowerCase = document.querySelector("#lowercase-letters");
 const includeUpperCase = document.querySelector("#uppercase-letters");
 const includeSymbols = document.querySelector("#symbols");
 const generateBtn = document.getElementById("generate-password");
+const strength = document.getElementById("strength");
 
 /*---- Configuration ----*/
 
 const NUMBERS = "0123456789";
 const LOWERCASE = "abcdefghijklmnopqrstuvwxyz";
 const UPPERCASE = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-const SYMBOLS = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
+const SYMBOLS = "!\#$%&()*+-./:<=>?@[]^_`{}~";
 
 /*---- Initialization ----*/
 
@@ -30,6 +31,26 @@ const generatePassword = () =>{
     const password = generateRandomPassword(passwordLengthValue, characters);
     passwordDisplay.innerText = password;
 
+    //password strength testing
+
+    if (passwordLengthValue <= 7) {
+        setTimeout(() => {
+            strength.innerHTML = "weak";
+            strength.style.color = "#f5203e";
+        }, 800);
+    } else if (passwordLengthValue <= 11) {
+        setTimeout(() => {
+            strength.innerHTML = "good";
+            strength.style.color = "#f1c80b";
+        }, 1000);
+    } else {
+        setTimeout(() => {
+            strength.innerHTML = "strong";
+            strength.style.color = "#43ed9c";
+            strength.classList.add('animate__animated', 'animate__slideInLeft');
+        }, 1200);
+    }
+
     //password animation
 
     const splitPassword = password.split("");
@@ -40,7 +61,7 @@ const generatePassword = () =>{
     }
 
     let char = 0;
-    let timer = setInterval(animationPassword, 50);
+    let timer = setInterval(animationPassword, 70);
 
     function animationPassword(){
         let span = document.querySelectorAll('span')[char];
